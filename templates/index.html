@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NER Product Extractor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Retrieval of Products</h1>
+    <form action="/" method="POST">
+        <label for="url">Enter URL:</label>
+        <input type="text" id="url" name="url" placeholder="Enter the website URL" required>
+        <button type="submit">Found</button>
+    </form>
+
+    {% if products %}
+        <h2>Founded Products:</h2>
+        <ul>
+            {% for product in products %}
+                <li>{{ product }}</li>
+            {% endfor %}
+        </ul>
+    {% elif no_products %}
+        <p>Products not founded.</p>
+    {% endif %}
+</body>
+</html>
